@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hana Stevović — Content Creator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D4;
+    --cream-deeper: #E2D8C4;
+    --ink: #1C1917;
+    --ink-soft: #3D3530;
+    --ink-muted: #7A6E65;
+    --ink-faint: #B0A69A;
+    --accent: #8B6F4E;
+    --accent-light: #C4A882;
+    --accent-pale: #F0E8DA;
+    --white: #FDFAF5;
+    --border: rgba(139, 111, 78, 0.18);
+    --border-soft: rgba(139, 111, 78, 0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-soft);
+    padding: 0 2.5rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 0 2.5rem; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(196, 168, 130, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner { padding: 6rem 0 4rem; width: 100%; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    width: 1.4rem; height: 1px;
+    background: var(--accent-light);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--accent); }
+
+  .hero-lead {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    max-width: 130px;
+    line-height: 1.5;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    transition: background 0.25s, transform 0.15s;
+  }
+
+  .hero-cta:hover { background: var(--accent); transform: translateY(-1px); }
+  .hero-cta svg { width: 14px; height: 14px; transition: transform 0.2s; }
+  .hero-cta:hover svg { transform: translateX(3px); }
+
+  section {
+    padding: 6rem 0;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .fact-block {
+    background: var(--accent-pale);
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .fact-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .fact-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .fact-sub {
+    font-size: 0.82rem;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+  }
+
+  /* WORK */
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5px;
+    background: var(--border);
+  }
+
+  .work-card {
+    background: var(--cream);
+    padding: 2.25rem;
+    transition: background 0.25s;
+  }
+
+  .work-card:hover { background: var(--accent-pale); }
+
+  .work-card.dark {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .work-card.dark:hover { background: var(--ink-soft); }
+
+  .work-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border);
+    display: inline-block;
+    margin-bottom: 1.25rem;
+    color: var(--ink-muted);
+  }
+
+  .work-card.dark .work-tag {
+    border-color: rgba(245,240,232,0.2);
+    color: rgba(245,240,232,0.5);
+  }
+
+  .work-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .work-card.dark .work-name { color: var(--white); }
+
+  .work-handle {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .work-card.dark .work-handle { color: var(--accent-light); }
+
+  .work-metric {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+  }
+
+  .work-card.dark .work-metric { color: var(--accent-light); }
+
+  .work-metric-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .work-card.dark .work-metric-label { color: rgba(245,240,232,0.4); }
+
+  .work-desc {
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    border-top: 1px solid var(--border-soft);
+    padding-top: 1rem;
+  }
+
+  .work-card.dark .work-desc {
+    color: rgba(245,240,232,0.6);
+    border-top-color: rgba(245,240,232,0.1);
+  }
+
+  .work-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: gap 0.2s;
+  }
+
+  .work-card.dark .work-link { color: var(--accent-light); }
+  .work-link:hover { gap: 0.7rem; }
+
+  .callout {
+    background: var(--accent-pale);
+    border-left: 3px solid var(--accent);
+    padding: 1rem 1.25rem;
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  .callout strong { color: var(--accent); font-weight: 500; }
+
+  /* SERVICES */
+  .services-intro {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .services-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .service-item {
+    background: var(--cream);
+    padding: 1.75rem 1.5rem;
+    transition: background 0.2s;
+  }
+
+  .service-item:hover { background: var(--accent-pale); }
+
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--ink-faint);
+    line-height: 1;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .service-desc {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  /* TOPICS */
+  .topics { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+
+  .topic {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    padding: 0.5rem 1.1rem;
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    background: var(--white);
+    transition: all 0.2s;
+  }
+
+  .topic:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .topic.primary { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  /* CONTACT */
+  .contact-wrap {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 6rem 0;
+    border-top: none;
+  }
+
+  .contact-wrap .section-label { color: var(--accent-light); }
+  .contact-wrap .section-label::after { background: rgba(196,168,130,0.2); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-title em { font-style: italic; color: var(--accent-light); }
+
+  .contact-body {
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.65);
+    line-height: 1.8;
+  }
+
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(245,240,232,0.1);
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .contact-link:hover {
+    border-color: var(--accent-light);
+    background: rgba(139,111,78,0.15);
+  }
+
+  .contact-link-icon { color: var(--accent-light); width: 20px; text-align: center; }
+
+  .contact-link-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+
+  .contact-link-value { font-size: 0.88rem; color: var(--cream); }
+
+  .footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(245,240,232,0.08);
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.25);
+    letter-spacing: 0.04em;
+  }
+
+  .screenshot-note {
+    background: var(--cream-dark);
+    border: 1.5px dashed var(--accent-light);
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-inner > * { animation: fadeUp 0.7s ease both; }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.5s; }
+
+  @media (max-width: 680px) {
+    .container { padding: 0 1.25rem; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .work-grid, .services-grid { grid-template-columns: 1fr; }
+  }
+
+  
+
+
+  /* VIDEOS */
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  @media (max-width: 680px) {
+    
+  }
+
+
+  /* VIDEOS */
+  .videos-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+  }
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .video-embed-wrap.portrait {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.7%;
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .video-embed-wrap.portrait iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .video-meta-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+
+  /* SUBTLE BACKGROUND PATTERN */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.028;
+    background-image:
+      radial-gradient(circle, #8B6F4E 1px, transparent 1px),
+      radial-gradient(circle, #8B6F4E 1.5px, transparent 1.5px);
+    background-size: 48px 48px, 96px 96px;
+    background-position: 0 0, 24px 24px;
+  }
+
+  /* CORNER BOTANICALS */
+  .botanical-tl,
+  .botanical-br {
+    position: fixed;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.07;
+  }
+
+  .botanical-tl { top: 0; left: 0; }
+  .botanical-br { bottom: 0; right: 0; transform: rotate(180deg); }
+
+</style>
+</head>
+<body>
+
+<svg class="botanical-tl" width="380" height="380" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#8B6F4E">
+    <!-- large flower top left -->
+    <circle cx="72" cy="72" r="6"/>
+    <ellipse cx="72" cy="52" rx="5" ry="10" opacity="0.6"/>
+    <ellipse cx="72" cy="92" rx="5" ry="10" opacity="0.6"/>
+    <ellipse cx="52" cy="72" rx="10" ry="5" opacity="0.6"/>
+    <ellipse cx="92" cy="72" rx="10" ry="5" opacity="0.6"/>
+    <ellipse cx="57" cy="57" rx="5" ry="10" transform="rotate(45 57 57)" opacity="0.45"/>
+    <ellipse cx="87" cy="57" rx="5" ry="10" transform="rotate(-45 87 57)" opacity="0.45"/>
+    <ellipse cx="57" cy="87" rx="5" ry="10" transform="rotate(-45 57 87)" opacity="0.45"/>
+    <ellipse cx="87" cy="87" rx="5" ry="10" transform="rotate(45 87 87)" opacity="0.45"/>
+    <!-- small flower -->
+    <circle cx="160" cy="38" r="3.5"/>
+    <ellipse cx="160" cy="25" rx="3" ry="7" opacity="0.55"/>
+    <ellipse cx="160" cy="51" rx="3" ry="7" opacity="0.55"/>
+    <ellipse cx="147" cy="38" rx="7" ry="3" opacity="0.55"/>
+    <ellipse cx="173" cy="38" rx="7" ry="3" opacity="0.55"/>
+    <ellipse cx="150" cy="28" rx="3" ry="7" transform="rotate(45 150 28)" opacity="0.4"/>
+    <ellipse cx="170" cy="28" rx="3" ry="7" transform="rotate(-45 170 28)" opacity="0.4"/>
+    <ellipse cx="150" cy="48" rx="3" ry="7" transform="rotate(-45 150 48)" opacity="0.4"/>
+    <ellipse cx="170" cy="48" rx="3" ry="7" transform="rotate(45 170 48)" opacity="0.4"/>
+    <!-- tiny flower -->
+    <circle cx="35" cy="168" r="2.5"/>
+    <ellipse cx="35" cy="159" rx="2" ry="5" opacity="0.5"/>
+    <ellipse cx="35" cy="177" rx="2" ry="5" opacity="0.5"/>
+    <ellipse cx="26" cy="168" rx="5" ry="2" opacity="0.5"/>
+    <ellipse cx="44" cy="168" rx="5" ry="2" opacity="0.5"/>
+    <!-- stem lines -->
+    <rect x="71" y="96" width="1.2" height="60" rx="1" opacity="0.35"/>
+    <rect x="71" y="96" width="1.2" height="60" rx="1" opacity="0.35" transform="rotate(35 71 130)"/>
+    <rect x="34" y="172" width="1" height="45" rx="1" opacity="0.3" transform="rotate(15 34 195)"/>
+    <!-- leaves -->
+    <ellipse cx="90" cy="130" rx="14" ry="6" transform="rotate(-30 90 130)" opacity="0.25"/>
+    <ellipse cx="55" cy="145" rx="12" ry="5" transform="rotate(40 55 145)" opacity="0.22"/>
+    <ellipse cx="22" cy="215" rx="10" ry="4" transform="rotate(-20 22 215)" opacity="0.2"/>
+    <!-- dots -->
+    <circle cx="120" cy="110" r="1.5" opacity="0.3"/>
+    <circle cx="140" cy="85" r="1" opacity="0.25"/>
+    <circle cx="50" cy="200" r="1.5" opacity="0.28"/>
+    <circle cx="18" cy="130" r="1" opacity="0.22"/>
+  </g>
+</svg>
+
+<svg class="botanical-br" width="320" height="320" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g fill="#8B6F4E">
+    <circle cx="72" cy="72" r="6"/>
+    <ellipse cx="72" cy="52" rx="5" ry="10" opacity="0.6"/>
+    <ellipse cx="72" cy="92" rx="5" ry="10" opacity="0.6"/>
+    <ellipse cx="52" cy="72" rx="10" ry="5" opacity="0.6"/>
+    <ellipse cx="92" cy="72" rx="10" ry="5" opacity="0.6"/>
+    <ellipse cx="57" cy="57" rx="5" ry="10" transform="rotate(45 57 57)" opacity="0.45"/>
+    <ellipse cx="87" cy="57" rx="5" ry="10" transform="rotate(-45 87 57)" opacity="0.45"/>
+    <ellipse cx="57" cy="87" rx="5" ry="10" transform="rotate(-45 57 87)" opacity="0.45"/>
+    <ellipse cx="87" cy="87" rx="5" ry="10" transform="rotate(45 87 87)" opacity="0.45"/>
+    <circle cx="160" cy="38" r="3.5"/>
+    <ellipse cx="160" cy="25" rx="3" ry="7" opacity="0.55"/>
+    <ellipse cx="160" cy="51" rx="3" ry="7" opacity="0.55"/>
+    <ellipse cx="147" cy="38" rx="7" ry="3" opacity="0.55"/>
+    <ellipse cx="173" cy="38" rx="7" ry="3" opacity="0.55"/>
+    <ellipse cx="91" cy="130" rx="14" ry="6" transform="rotate(-30 91 130)" opacity="0.25"/>
+    <ellipse cx="55" cy="145" rx="12" ry="5" transform="rotate(40 55 145)" opacity="0.22"/>
+    <circle cx="120" cy="110" r="1.5" opacity="0.3"/>
+    <circle cx="140" cy="85" r="1" opacity="0.25"/>
+  </g>
+</svg>
+
+
+<nav>
+  <div class="nav-name">Hana Stevović</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Video Content · Finance · Education · Social Sciences</span>
+      <h1>Hana<br><em>Stevović</em></h1>
+      <p class="hero-lead">
+        I create video content that makes complex topics genuinely watchable — finance, economics, education, languages and social sciences. Journalistic precision, proven viral reach, European markets.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">380K</div>
+          <div class="hero-stat-label">views — Bloomberg Adria TikTok</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">~20%</div>
+          <div class="hero-stat-label">engagement rate (industry avg: 3–6%)</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">6 yrs</div>
+          <div class="hero-stat-label">journalism, writing & social media</div>
+        </div>
+      </div>
+      <a href="#contact" class="hero-cta">
+        Get in touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I work at the intersection of journalism and digital content — where information has to be accurate, engaging and shareable all at once.
+        </p>
+        <p>
+          Four years in economic journalism, one year in content writing, one year managing social media — I know how to turn complex topics into video that the algorithm pushes well beyond a channel's existing followers. My background spans economics, social sciences and languages, which means I can cover a broad range of subjects with the same depth. Videos I've produced have reached up to 380,000 views.
+        </p>
+        <p>
+          I work primarily by creating video content for brand channels — not sponsored posts on my own profile. What brands get is a rare combination: editorial accuracy and an instinct for what actually gets watched.
+        </p>
+      </div>
+      <div>
+        <div class="fact-block">
+          <div class="fact-label">Education</div>
+          <div class="fact-value">BA in Journalism</div>
+          <div class="fact-sub">Faculty of Political Sciences · University of Belgrade</div>
+        </div>
+        <div class="fact-block">
+          <div class="fact-label">Background</div>
+          <div class="fact-value">Economics · Social Sciences</div>
+          <div class="fact-sub">Foundation for covering financial and business topics with precision</div>
+        </div>
+        <div class="fact-block">
+          <div class="fact-label">Languages</div>
+          <div class="fact-value">Serbian · English</div>
+          <div class="fact-sub">Content for both local and international audiences</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="section-label">Selected work</div>
+
+    <div class="work-grid">
+
+      <div class="work-card dark">
+        <div class="work-tag">Reference · Economics</div>
+        <div class="work-name">Bloomberg Adria</div>
+        <div class="work-handle">@bloombergadria · TikTok</div>
+        <div class="work-metric">380K</div>
+        <div class="work-metric-label">peak views on a single video</div>
+        <div class="work-desc">Video content for Bloomberg Adria, the region's leading business media outlet. Finance is notoriously hard to make go viral — this result ranks among the top in the category.</div>
+        <a class="work-link" href="https://www.tiktok.com/@bloombergadria/video/7411424688242576673" target="_blank">View example →</a>
+      </div>
+
+      <div class="work-card">
+        <div class="work-tag">Active · Multi-platform</div>
+        <div class="work-name">Ling Eastern Europe</div>
+        <div class="work-handle">@ling_easterneurope · Instagram + TikTok</div>
+        <div class="work-metric">3,640</div>
+        <div class="work-metric-label">Instagram followers from zero in 4 months</div>
+        <div class="work-desc">Managing Instagram (204 posts) and TikTok from launch. Organic growth, no paid promotion. TikTok videos reaching 200K views.</div>
+        <a class="work-link" href="https://www.instagram.com/ling_easterneurope/" target="_blank">View channel →</a>
+      </div>
+
+      <div class="work-card">
+        <div class="work-tag">Personal · Travel & Lifestyle</div>
+        <div class="work-name">Hana | Travel & Tips</div>
+        <div class="work-handle">@stevovic.hana · TikTok</div>
+        <div class="work-metric">~20%</div>
+        <div class="work-metric-label">engagement rate (64.8K likes · 3.1K followers)</div>
+        <div class="work-desc">64,800 likes on 3,131 followers. Audience that actually engages — not just scrolls. Brand collaborations with international companies.</div>
+        <a class="work-link" href="https://www.tiktok.com/@stevovic.hana" target="_blank">View channel →</a>
+      </div>
+
+      <div class="work-card">
+        <div class="work-tag">Personal · Finance</div>
+        <div class="work-name">HaniMani</div>
+        <div class="work-handle">@haniiiimaniiii · TikTok</div>
+        <div class="work-metric">1,175</div>
+        <div class="work-metric-label">followers after 9 videos</div>
+        <div class="work-desc">Personal finance for young European audiences — an underserved niche. Early traction signals strong growth potential.</div>
+        <a class="work-link" href="https://www.tiktok.com/@haniiiimaniiii" target="_blank">View channel →</a>
+      </div>
+
+    </div>
+
+    <div class="callout">
+      <strong>A note on reach vs. following:</strong> High view counts on channels with modest follower numbers signal strong algorithmic distribution — content reaching new audiences organically, not just an existing subscriber base. That is exactly what brand content needs to do.
+    </div>
+
+  </div>
+</section>
+
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="container">
+    <div class="section-label">Featured videos</div>
+    <div class="videos-grid">
+
+      <div class="video-card">
+        <div class="video-embed-wrap portrait">
+          <iframe src="https://www.instagram.com/reel/DW3QN_2jogn/embed/" allowfullscreen scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <div class="video-meta-label">Instagram Reel · Ling Eastern Europe</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap portrait">
+          <iframe src="https://www.instagram.com/reel/DV0SbZ_AND4/embed/" allowfullscreen scrolling="no" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+        <div class="video-meta-label">Instagram Reel · Ling Eastern Europe</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap portrait">
+          <iframe src="https://www.tiktok.com/embed/v2/7411424688242576673" allowfullscreen allow="encrypted-media;"></iframe>
+        </div>
+        <div class="video-meta-label">TikTok · Bloomberg Adria · 380K views</div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-embed-wrap portrait">
+          <iframe src="https://www.tiktok.com/embed/v2/7603116893792242965" allowfullscreen allow="encrypted-media;"></iframe>
+        </div>
+        <div class="video-meta-label">TikTok · @haniiiimaniiii · Personal finance</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <p class="services-intro">
+      I create video content for brand channels — TikTok and Instagram Reels. Available for one-off productions, monthly retainers and full channel management.
+    </p>
+
+    <div class="services-grid">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div class="service-name">TikTok videos for your channel</div>
+        <div class="service-desc">Script, shoot, edit. Educational, finance, language and social content that travels.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div class="service-name">Instagram Reels</div>
+        <div class="service-desc">Short-form video aligned with current platform trends.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div class="service-name">Monthly content retainer</div>
+        <div class="service-desc">Regular delivery of scripted, produced videos. Consistent brand presence.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">04</div>
+        <div class="service-name">Content strategy</div>
+        <div class="service-desc">Topic mapping, audience analysis and a 1–3 month video plan.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">05</div>
+        <div class="service-name">Channel management</div>
+        <div class="service-desc">End-to-end TikTok or Instagram management — from concept to publish.</div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">06</div>
+        <div class="service-name">Scriptwriting</div>
+        <div class="service-desc">Scripts for your in-house productions. Precise, well-researched, audience-ready.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem;">
+      <div class="section-label" style="margin-bottom: 1.5rem;">Topics & industries</div>
+      <div class="topics">
+        <span class="topic primary">Personal finance</span>
+        <span class="topic primary">Investing</span>
+        <span class="topic primary">Taxes</span>
+        <span class="topic primary">Real estate</span>
+        <span class="topic primary">Banking & fintech</span>
+        <span class="topic primary">Languages &amp; language learning</span>
+        <span class="topic primary">Education</span>
+        <span class="topic primary">Social sciences</span>
+        <span class="topic primary">Political science</span>
+        <span class="topic">Macroeconomics</span>
+        <span class="topic">Business news</span>
+        
+        <span class="topic">Travel (reference)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-wrap">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-title">Let's work<br><em>together</em></div>
+        <p class="contact-body">
+          Open to long-term collaborations with brands in finance, banking, real estate and related sectors — particularly those looking to build a consistent video presence in European markets.
+        </p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-link" href="https://www.tiktok.com/@stevovic.hana" target="_blank">
+          <span class="contact-link-icon">↗</span>
+          <div>
+            <span class="contact-link-label">TikTok</span>
+            <span class="contact-link-value">@stevovic.hana</span>
+          </div>
+        </a>
+        <a class="contact-link" href="https://www.tiktok.com/@haniiiimaniiii" target="_blank">
+          <span class="contact-link-icon">↗</span>
+          <div>
+            <span class="contact-link-label">TikTok · Finance</span>
+            <span class="contact-link-value">@haniiiimaniiii</span>
+          </div>
+        </a>
+        <a class="contact-link" href="https://www.instagram.com/ling_easterneurope/" target="_blank">
+          <span class="contact-link-icon">↗</span>
+          <div>
+            <span class="contact-link-label">Instagram · Ling Eastern Europe</span>
+            <span class="contact-link-value">@ling_easterneurope</span>
+          </div>
+        </a>
+        <a class="contact-link" href="mailto:hana_stevovic@yahoo.com">
+          <span class="contact-link-icon">✉</span>
+          <div>
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">hana_stevovic@yahoo.com</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="footer">© 2025 Hana Stevović · Belgrade, Serbia</div>
+  </div>
+</section>
+
+</body>
+</html>
